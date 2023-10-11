@@ -74,11 +74,13 @@ const counter = ref(0)
 
 const activeQuestion = ref(null);
 
-function pointResult(id, points) {
-    console.log(points);
-    if (questions[id].points === 0) {
+const pointResult = (id, points) => {
+    console.log(points, id, questions);
+    if (questions[id] && questions[id].points === 0) {
         counter.value += points;
         questions[id].points = points;
+    } else if (questions[id] == undefined) {
+        console.log("Question with id not found ", id);
     }
 }
 

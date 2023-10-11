@@ -17,7 +17,7 @@ const emit = defineEmits(['points', 'next'])
 
 function selectAnswer(answer) {
     console.log(answer);
-    this.selectedAnswer = answer;
+    selectedAnswer.value = answer;
 }
 
 function triggerNext() {
@@ -54,7 +54,7 @@ function submitAnswer(selectedAnswer) {
         points = 100;
         textAnswered.value = "Bravo !!";
     }
-    emit('points', this.id, points);
+    emit('points', id.value, points);
     answerWasSubmitted.value = true;
 }
 </script>
