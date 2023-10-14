@@ -59,21 +59,28 @@ defineExpose({
 });
 
 function submitAnswer(selectedAnswer) {
-    console.log(selectedAnswer);
+    console.log("Submitting answer ", selectedAnswer, questionType.value);
     var points = 0;
     textAnswered.value = "Dommage :( Essaie encore !";
-    if (questionType == questionType.MultiChoice) {
+    if (questionType.value === QuestionType.MultiChoice) {
+        console.log("MultiChoice answer", selectedAnswer, validAnswer.value)
         if (selectedAnswer === validAnswer.value) {
             points = 100;
         }
     } else {
+        console.log("Text answer")
         const pointsPerAnswer = 100 / textAnswers.value.length;
         var correctAnswers = []
+        localProposals.value = localProposals.value.map((element) => {
+            return element.inputField.replace(/\s+/g, '').toUpperCase();
+        });
+        // Delete duplicates in localProposals
+        localProposals.value = [...new Set(localProposals.value)]
         localProposals.value.forEach(element => {
             console.log(element);
-            if (textAnswers.value.includes(element.inputField.replace(/\s+/g, '').toUpperCase())) {
+            if (textAnswers.value.includes(element)) {
                 points += pointsPerAnswer;
-                correctAnswers.push(element.inputField.toLowerCase());
+                correctAnswers.push(element.charAt(0).toUpperCase() + element.slice(1).toLowerCase());
             }
         });
         textAnswered.value = "Dommage :( Essaie encore ! Tu as trouvé : " + correctAnswers.join(", ");
@@ -115,8 +122,9 @@ function submitAnswer(selectedAnswer) {
   background-color: hsl(214, 83%, 70%);
 }
 .answer-box {
-  width: 200px;
-  height: 100px;
+/*  width: 200px;
+  height: 100px; */
+  width: 75%;
   border: 1px solid black;
   margin: auto;
   margin-bottom: 10px;

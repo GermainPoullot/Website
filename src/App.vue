@@ -50,7 +50,7 @@ const questions = [
 {
     question: '"Le polytope des chemins monotones est une déformation du polytope de pivot"',
     answers: ["Cette phrase est vraie", "Cette phrase est écrite dans le mauvais sens"],
-    answer: ["Cette phrase est vraie"],
+    answer: "Cette phrase est vraie",
     points: 0,
     id: 6,
 },
@@ -67,6 +67,30 @@ const questions = [
     answer: "3",
     points: 0,
     id: 8,
+},
+{
+    question: "La première phrase de ma thèse est (l'autre a été écrite par ChatGPT)",
+    answers: ["Mathematicians study geometry for more than 2 500 years.",
+              "In the realm of mathematics and its far-reaching applications, polytopes stand as fascinating geometric objects that have intrigued scholars for centuries."],
+    answer: "Mathematicians study geometry for more than 2 500 years.",
+    points: 0,
+    id: 9,
+},
+{
+    question: "L'un des paragraphes suivants a été écrit avec ChatGPT, l'autre provient de ma thèse. Lequel provient de ma thèse ?",
+    answers: ["The aim is to optimize a linear functional subject to linear constraints. For example, imagine I want to breed goats and cows. My barn has 15 boxes, a goat takes 1 box and a cow 3 boxes. Milking a goat gives 4L, while a cow gives 3L, and my storage allows at most 24L. I want to maximize the number of animals I have.",
+              "Imagine you have $100 to spend on teddy bears and toy cars. Teddy bears cost $10 each, and toy cars cost $5 each. You want to buy as many toys as possible without exceeding your budget of $100. However, you can only fit up to 10 teddy bears and 20 toy cars in your room. This is a linear programming problem, where you aim to maximize the total number of toys (teddy bears and toy cars) you can buy while staying within your budget and storage space constraints."],
+    answer: "The aim is to optimize a linear functional subject to linear constraints. For example, imagine I want to breed goats and cows. My barn has 15 boxes, a goat takes 1 box and a cow 3 boxes. Milking a goat gives 4L, while a cow gives 3L, and my storage allows at most 24L. I want to maximize the number of animals I have.",
+    points: 0,
+    id: 10,
+},
+{
+    question: "L'un des paragraphes suivants a été écrit avec ChatGPT, l'autre provient de ma thèse. Lequel provient de ma thèse ?",
+    answers: ["Such a keen interest in polyhedra may be explained by their duality. Polytopes, particularly polyhedra, have captivated mathematicians, physicists, and researchers across various disciplines for centuries due to their unique property of being dual to one another. This duality not only reveals profound relationships between seemingly distinct geometric structures but also unveils essential insights into the underlying symmetries and combinatorial properties of polytopes. In this Ph.D. thesis, we delve deep into the rich world of polytopes, exploring their duality transformations, topological properties, and applications across diverse scientific domains.",
+              "Such a keen interest for polyhedra may be explained by their duality. Indeed, polyhedra are both simple to define, and rich in the behaviors they can express; they are sitting on the fence between concrete numerical geometry and purely abstract topology; they are drawn and visualized by everyone but elementary properties can be hard to prove; they seem alighting from the realm of ideas, although they can be directly encountered in nature (from capsids of viruses to furnishing). If this has participated in draping polyhedra with a mystical allure, it has also exerted a prolific fascination on numerous mathematicians."],
+    answer: "Such a keen interest for polyhedra may be explained by their duality. Indeed, polyhedra are both simple to define, and rich in the behaviors they can express; they are sitting on the fence between concrete numerical geometry and purely abstract topology; they are drawn and visualized by everyone but elementary properties can be hard to prove; they seem alighting from the realm of ideas, although they can be directly encountered in nature (from capsids of viruses to furnishing). If this has participated in draping polyhedra with a mystical allure, it has also exerted a prolific fascination on numerous mathematicians.",
+    points: 0,
+    id: 11,
 }
 ]
 
