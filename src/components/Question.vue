@@ -8,7 +8,13 @@ const selectedAnswer = ref(null)
 const answerWasSubmitted = ref(false)
 const localQuestion = ref(props.question.question)
 const localAnswers = ref(props.question.answers)
+const textAnswers = ref(null)
 const localProposals = ref(null)
+const QuestionType = {
+ 	MultiChoice: 0,
+ 	TextInput: 1,
+}
+const questionType = ref(QuestionType.MultiChoice)
 const validAnswer = ref(props.question.answer)
 const id = ref(props.question.id)
 const ans1 = ref("")
@@ -29,12 +35,18 @@ function reset(newQuestion) {
     console.log(newQuestion.question)
     localQuestion.value = newQuestion.question;
     if (newQuestion.questionType === "textList") {
-        localProposals.value = newQuestion.answers.map((answer) => {
-            return {answer, inputA:""};
+        questionType.value = QuestionType.TextInput;
+        localProposals.value = newQuestion.answers.map((_) => {
+            return {inputField:""};
+        });
+        textAnswers.value = newQuestion.answers.map((answer) => {
+            return answer.toUpperCase();
         })
         localAnswers.value = null;
     } else {
+        questionType.value = QuestionType.MultiChoice;
         localAnswers.value = newQuestion.answers;
+        localProposals.value = null;
     }
     validAnswer.value = newQuestion.answer;
     answerWasSubmitted.value = false;
@@ -50,8 +62,23 @@ function submitAnswer(selectedAnswer) {
     console.log(selectedAnswer);
     var points = 0;
     textAnswered.value = "Dommage :( Essaie encore !";
-    if (selectedAnswer == validAnswer.value) {
-        points = 100;
+    if (questionType == questionType.MultiChoice) {
+        if (selectedAnswer === validAnswer.value) {
+            points = 100;
+        }
+    } else {
+        const pointsPerAnswer = 100 / textAnswers.value.length;
+        var correctAnswers = []
+        localProposals.value.forEach(element => {
+            console.log(element);
+            if (textAnswers.value.includes(element.inputField.replace(/\s+/g, '').toUpperCase())) {
+                points += pointsPerAnswer;
+                correctAnswers.push(element.inputField.toLowerCase());
+            }
+        });
+        textAnswered.value = "Dommage :( Essaie encore ! Tu as trouvé : " + correctAnswers.join(", ");
+    }
+    if (points == 100) {
         textAnswered.value = "Bravo !!";
     }
     emit('points', id.value, points);
@@ -66,10 +93,10 @@ function submitAnswer(selectedAnswer) {
                 {{ answer }}
             </div>
         <div class="qtManualText">
-            <input v-for="answer in localProposals" type="text" :id=answer v-model=answer.inputA name="name" required minlength="4" maxlength="16" size="10" />
+            <input v-for="answer in localProposals" type="text" :id=answer v-model=answer.inputField name="name" required minlength="4" maxlength="16" size="10" />
             {{ ans1 }}
         </div>
-        <button v-if="selectedAnswer" @click=submitAnswer(selectedAnswer)>Submit</button>
+        <button v-if="selectedAnswer || questionType == QuestionType.TextInput" @click=submitAnswer(selectedAnswer)>Submit</button>
     </div>
     <div class=answered v-else>
         <h1> {{ textAnswered }}</h1>

@@ -79,6 +79,12 @@ const pointResult = (id, points) => {
     if (questions[id] && questions[id].points === 0) {
         counter.value += points;
         questions[id].points = points;
+    } else if (questions[id].points != 100) {
+        const diff = points - questions[id].points
+        if (diff > 0) {
+            counter.value += diff;
+            questions[id].points = points;
+        }
     } else if (questions[id] == undefined) {
         console.log("Question with id not found ", id);
     }
