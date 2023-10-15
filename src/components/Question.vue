@@ -101,7 +101,7 @@ function submitAnswer(selectedAnswer) {
 <template>
     <div class=qt v-if="!answerWasSubmitted">
         <h1>{{ localQuestion }}</h1>
-        <img class="mainImage" v-if="mainImagePath" :src="`./public/${mainImagePath}`" >
+        <img class="mainImage" v-if="mainImagePath" :src="`./${mainImagePath}`" >
             <div v-for="answer in localAnswers" :key="answer" :class="{ 'answer-box': true, 'selected': selectedAnswer === answer }" @click=selectAnswer(answer)>
                 {{ answer }}
             </div>
