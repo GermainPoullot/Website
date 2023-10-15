@@ -229,7 +229,18 @@ const questions = [
     id: 27,
 },
 {
-    question: ""
+    question: "Combien y-a-t'il eu de séances du séminaire DGeCo (le résumé est disponible sur mon site) ?",
+    answers: ["10", "36", "42", "52", "59", "63", "74", "1216"],
+    answer: "63",
+    points: 0,
+    id: 28,
+},
+{
+    question: "Avez-vous aimé ce petit jeu ?",
+    answers: ["Ouiiiiiiiiiiiiiiiiiiiii", "Non"],
+    answer: "Ouiiiiiiiiiiiiiiiiiiiii",
+    points: 0,
+    id: 29,
 }
 ]
 
