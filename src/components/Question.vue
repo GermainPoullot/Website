@@ -6,7 +6,10 @@ const props = defineProps({
 })
 const selectedAnswer = ref(null)
 const answerWasSubmitted = ref(false)
+
 const localQuestion = ref(props.question.question)
+const mainImagePath = ref(null)
+
 const localAnswers = ref(props.question.answers)
 const textAnswers = ref(null)
 const localProposals = ref(null)
@@ -34,6 +37,7 @@ function reset(newQuestion) {
     console.log("Reset");
     console.log(newQuestion.question)
     selectedAnswer.value = null;
+    mainImagePath.value = newQuestion.mainImagePath;
     localQuestion.value = newQuestion.question;
     if (newQuestion.questionType === "textList") {
         questionType.value = QuestionType.TextInput;
@@ -97,6 +101,7 @@ function submitAnswer(selectedAnswer) {
 <template>
     <div class=qt v-if="!answerWasSubmitted">
         <h1>{{ localQuestion }}</h1>
+        <img class="mainImage" v-if="mainImagePath" :src="`./public/${mainImagePath}`" >
             <div v-for="answer in localAnswers" :key="answer" :class="{ 'answer-box': true, 'selected': selectedAnswer === answer }" @click=selectAnswer(answer)>
                 {{ answer }}
             </div>
@@ -141,6 +146,15 @@ function submitAnswer(selectedAnswer) {
 .boutonValider {
     width: 200px;
     height: 50px;
+}
+
+.mainImage {
+    display: block;
+    max-height: 500pt;
+    max-width: 75%;
+    text-align: center;
+    margin: auto;
+    margin-bottom: 20pt;
 }
 
 </style>
