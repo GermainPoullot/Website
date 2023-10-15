@@ -11,6 +11,7 @@ const localQuestion = ref(props.question.question)
 const mainImagePath = ref(null)
 
 const localAnswers = ref(props.question.answers)
+const localImagesAnswers = ref(null)
 const textAnswers = ref(null)
 const localProposals = ref(null)
 const QuestionType = {
@@ -39,6 +40,7 @@ function reset(newQuestion) {
     selectedAnswer.value = null;
     mainImagePath.value = newQuestion.mainImagePath;
     localQuestion.value = newQuestion.question;
+    localImagesAnswers.value = newQuestion.imagesAnswers;
     if (newQuestion.questionType === "textList") {
         questionType.value = QuestionType.TextInput;
         localProposals.value = newQuestion.answers.map((_) => {
@@ -102,8 +104,8 @@ function submitAnswer(selectedAnswer) {
     <div class=qt v-if="!answerWasSubmitted">
         <h1>{{ localQuestion }}</h1>
         <img class="mainImage" v-if="mainImagePath" :src="`./${mainImagePath}`" >
-            <div v-for="answer in localAnswers" :key="answer" :class="{ 'answer-box': true, 'selected': selectedAnswer === answer }" @click=selectAnswer(answer)>
-                {{ answer }}
+            <div v-for="(answer, index) in localAnswers" :key="answer" :class="{ 'answer-box': true, 'selected': selectedAnswer === answer }" @click=selectAnswer(answer)>
+                <div v-if="!localImagesAnswers">{{ answer }}</div> <img v-else class=answerImage :src="`./${localImagesAnswers[index]}`">
             </div>
         <div class="qtManualText">
             <input v-for="answer in localProposals" type="text" :id=answer v-model=answer.inputField name="name" required minlength="4" maxlength="16" size="10" />
@@ -155,6 +157,10 @@ function submitAnswer(selectedAnswer) {
     text-align: center;
     margin: auto;
     margin-bottom: 20pt;
+}
+
+.answerImage {
+    height: 30px;
 }
 
 </style>

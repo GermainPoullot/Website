@@ -14,7 +14,9 @@ const questions = [
 },
 {
     question: "Combien y-a-t'il d'arêtes dans un cube de dimension d ?",
+    mainImagePath: "q1/cubes.png",
     answers: ["2^(d+1) - 2^d", "d*2^(d-1)", "2^d", "(2 parmi d) * 2^(d-1)"],
+    imagesAnswers : [ "q1/2d2d.png", "q1/d2d.png", "q1/2d.png", "q1/binom.png"],
     answer: "d*2^(d-1)",
     id: 1,
     points: 0,
@@ -101,7 +103,7 @@ const questions = [
 },
 {
     question: "Sur quel jeu ai-je passé le plus de temps ?",
-    answers: ["Super Smash Bros. Ultimate", "Yoshi's island", "Elden Ring", "Zelda: Tears of the Kindgdom", "The binding of Isaac: Repentance"],
+    answers: ["Super Smash Bros. Ultimate", "Yoshi's Island", "Elden Ring", "Zelda: Tears of the Kindgdom", "The binding of Isaac: Repentance"],
     answer: "The binding of Isaac: Repentance",
     points: 0,
     id: 13,
@@ -128,9 +130,10 @@ const questions = [
     id: 16,
 },
 {
-    question: "Combien de feuilles faut-il pour réaliser ce cube tronqué en origami ?",
+    question: "Combien de feuilles faut-il pour réaliser ce cube tronqué en origami ?",
     answers: ["3", "6", "7", "9", "12", "15", "30"],
     answer: "12",
+    mainImagePath: "origami.jpeg",
     points: 0,
     id: 17,
 },
@@ -150,7 +153,7 @@ const questions = [
     id: 18,
 },
 {
-    questions: "Quel est le nom de ce polyèdre ?",
+    question: "Quel est le nom de ce polyèdre ?",
     answers: ["Octaèdre cubique", "Octaèdre rhombique",
               "Octaèdre tronqué", "Octaèdre régulier",
               "Décaèdre cubique", "Décaèdre rhombique",
@@ -181,7 +184,7 @@ const questions = [
     id: 21,
 },
 {
-    question: "De quelle auteure ai-je lu plus de 14000 pages ?",
+    question: "De quelle auteure ai-je lu plus de 14 000 pages ?",
     answers: ["Jane Austen", "Agatha Christie", "Marguerite Duras", "Robin Hobb",
               "Anne Robillard", "George Sand", "Virginia Woolf"],
     answer: "Robin Hobb",
@@ -203,6 +206,31 @@ const questions = [
     points: 0,
     id: 24,
 },
+{
+    question: "Parmi ces auteurs, lequel n'est pas cité dans ma thèse ?",
+    answers: ["Virginia Woolf", "Oscar Wilde", "Walt Whitman", "Michel Berger", "Thomas Fuller",
+              "Marie Curie", "Edgar Allan Poe"],
+    answer: "Virginia Woolf",
+    points: 0,
+    id: 25,
+},
+{
+    question: "Quelle est la dimension du cône sous-modulaire pour n=4 (cône de déformation du permutaèdre de dimension 3), sans son linéal ?",
+    answers: ["4", "9", "11", "14", "26"],
+    answer: "11",
+    points: 0,
+    id: 26,
+},
+{
+    question: "Combien ai-je suspendu de posters dans le couloir 15/16, 5ème étage ?",
+    answers: ["0", "1", "2", "3", "4", "5"],
+    answer: "3",
+    points: 0,
+    id: 27,
+},
+{
+    question: ""
+}
 ]
 
 const counter = ref(0)
