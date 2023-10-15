@@ -42,7 +42,7 @@ const questions = [
 },
 {
     question: "En quelle année suis-je né ?",
-    answers: ["1995", "1996", "1997", "1998"],
+    answers: ["1994", "1995", "1996", "1997", "1998"],
     answer: "1996",
     points: 0,
     id: 5,
@@ -91,6 +91,48 @@ const questions = [
     answer: "Such a keen interest for polyhedra may be explained by their duality. Indeed, polyhedra are both simple to define, and rich in the behaviors they can express; they are sitting on the fence between concrete numerical geometry and purely abstract topology; they are drawn and visualized by everyone but elementary properties can be hard to prove; they seem alighting from the realm of ideas, although they can be directly encountered in nature (from capsids of viruses to furnishing). If this has participated in draping polyhedra with a mystical allure, it has also exerted a prolific fascination on numerous mathematicians.",
     points: 0,
     id: 11,
+},
+{
+    question: "Combien ai-je de T-shirts à motifs japonais?",
+    answers: ["4", "8", "6", "2", "5", "42", "10", "12"],
+    answer: "8",
+    points: 0,
+    id: 12,
+},
+{
+    question: "Sur quel jeu ai-je passé le plus de temps ?",
+    answers: ["Super Smash Bros. Ultimate", "Yoshi's island", "Elden Ring", "Zelda: Tears of the Kindgdom", "The binding of Isaac: Repentance"],
+    answer: "The binding of Isaac: Repentance",
+    points: 0,
+    id: 13,
+},
+{
+    question: "Quel est le pseudonyme que j'utilise sur Internet quand ce n'est pas mon vrai nom ?",
+    answers: ["Monsieur Poulpe", "Nathanaël Targaryen", "Germichou", "xXSniperDu92Xx", "Embrun_Forestier" ],
+    answer: "Nathanaël Targaryen",
+    points: 0,
+    id: 14,
+},
+{
+    question: "A quoi suis-je allergique ?",
+    answers: ["Amande, Pistache, Noisette", "Cacahuète, Noix de cajou, Noix de pécan", "Noisette, Noix, Noix de pécan", "Noix du Brésil, Noix de Macadamia, Noix de muscade"],
+    answer: "Noisette, Noix, Noix de pécan",
+    points: 0,
+    id: 15,
+},
+{
+    question: "Dans quelles villes ai-je principalement habité ?",
+    answers: ["Levallois", "Meudon" ],
+    questionType: "textList",
+    points: 0,
+    id: 16,
+},
+{
+    question: "Combien de feuilles faut-il pour réaliser ce cube tronqué en origami ?",
+    answers: ["3", "6", "7", "9", "12", "15", "30"],
+    answer: "12",
+    points: 0,
+    id: 17,
 }
 ]
 
@@ -115,7 +157,7 @@ const pointResult = (id, points) => {
 }
 
 function gotoNext() {
-    console.log("Next");
+    console.log("Suivant");
     if (currentQuestion >= questions.length - 1) {
         currentQuestion = 0;
         finished.value = true;
@@ -137,7 +179,7 @@ function goToQuestion(id) {
         <div class="container">
             <div class="sidebar">
                 <!-- Content for the left column goes here -->
-                Question List
+                Liste des questions
                     <div v-for="question in questions" :key="question.id" @click=goToQuestion(question.id) :class="{ 'full-points': question.points == 100, 'somePoints': question.points < 100 && question.points > 0,'zeroPoints': question.points === 0}">
                     Question {{ question.id }}
                 </div>

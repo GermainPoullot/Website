@@ -33,6 +33,7 @@ function triggerNext() {
 function reset(newQuestion) {
     console.log("Reset");
     console.log(newQuestion.question)
+    selectedAnswer.value = null;
     localQuestion.value = newQuestion.question;
     if (newQuestion.questionType === "textList") {
         questionType.value = QuestionType.TextInput;
@@ -103,11 +104,11 @@ function submitAnswer(selectedAnswer) {
             <input v-for="answer in localProposals" type="text" :id=answer v-model=answer.inputField name="name" required minlength="4" maxlength="16" size="10" />
             {{ ans1 }}
         </div>
-        <button v-if="selectedAnswer || questionType == QuestionType.TextInput" @click=submitAnswer(selectedAnswer)>Submit</button>
+        <button v-if="selectedAnswer || questionType == QuestionType.TextInput" @click=submitAnswer(selectedAnswer) class="boutonValider">Valider</button>
     </div>
     <div class=answered v-else>
         <h1> {{ textAnswered }}</h1>
-        <button @click=triggerNext>Bring me to next!</button>
+        <button @click=triggerNext>Question suivante !</button>
     </div>
 </template>
 
@@ -136,5 +137,10 @@ function submitAnswer(selectedAnswer) {
     margin: auto;
   text-align: center;
   }
+
+.boutonValider {
+    width: 200px;
+    height: 50px;
+}
 
 </style>
