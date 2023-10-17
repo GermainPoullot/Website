@@ -108,7 +108,7 @@ function submitAnswer(selectedAnswer) {
                 <div v-if="!localImagesAnswers">{{ answer }}</div> <img v-else class=answerImage :src="`./${localImagesAnswers[index]}`">
             </div>
         <div class="qtManualText">
-            <input v-for="answer in localProposals" type="text" :id=answer v-model=answer.inputField name="name" required minlength="4" maxlength="16" size="10" />
+            <input v-for="answer in localProposals" type="text" :id=answer v-model=answer.inputField name="name" class="textBox" required minlength="4" maxlength="16" size="10" />
             {{ ans1 }}
         </div>
         <button v-if="selectedAnswer || questionType == QuestionType.TextInput" @click=submitAnswer(selectedAnswer) class="boutonValider">Valider</button>
@@ -148,6 +148,10 @@ function submitAnswer(selectedAnswer) {
 .boutonValider {
     width: 200px;
     height: 50px;
+}
+
+.textBox {
+    margin: 10px;
 }
 
 .mainImage {
