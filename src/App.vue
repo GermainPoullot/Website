@@ -122,7 +122,7 @@ const questions = [
 },
 {
     question: "Dans quels pays suis-je allé faire des maths depuis mon M1 (inclus) ?",
-    answers: ["Allemagne", "Russie", "Autriche", "France"],
+    answers: ["Allemagne", "Russie", "Autriche", "France", "Italie", "Espagne"],
     questionType: "textList",
     id: 16,
     points: 0,
